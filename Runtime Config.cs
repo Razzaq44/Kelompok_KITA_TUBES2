@@ -7,6 +7,7 @@ using System.IO;
 using Newtonsoft.Json;
 using System.Text.Json;
 using Newtonsoft.Json.Linq;
+using SaldoLibrary;
 
 namespace Kelompok_6_TUBES
 {
@@ -76,19 +77,41 @@ namespace Kelompok_6_TUBES
 
             string jsonStringFromFile = File.ReadAllText(path + "/" + fileConfigName);
             var config = System.Text.Json.JsonSerializer.Deserialize<Config>(jsonStringFromFile);
+            int NewSaldo = config.saldo;
 
             JObject jObject = Newtonsoft.Json.JsonConvert.DeserializeObject(jsonStringFromFile) as JObject;
             JToken jToken = jObject.SelectToken("saldo");
-            if (config.saldo <= 0)
+
+            if (NewSaldo <= 0)
             {
-                int Newsaldo = 0;
-                jToken.Replace(Newsaldo);
+                NewSaldo = 0;
+                jToken.Replace(NewSaldo);
             }
             else
             {
-                int Newsaldo = Saldo - Jumlah - config.fee;
-                jToken.Replace(Newsaldo);
+                NewSaldo = SaldoLibrary.Saldo.transfer(NewSaldo, Jumlah, config.fee);
+                jToken.Replace(NewSaldo);
             }
+            string updatedJsonString = jObject.ToString();
+            File.WriteAllText(pathAndFile, updatedJsonString);
+        }
+
+        public static void UpdateSaldoTopUp(int Saldo, int Nominal)
+        {
+            string path = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName;
+            string fileConfigName = "E-Wallet_config.json";
+            string pathAndFile = path + "/" + fileConfigName;
+
+            string jsonStringFromFile = File.ReadAllText(path + "/" + fileConfigName);
+            var config = System.Text.Json.JsonSerializer.Deserialize<Config>(jsonStringFromFile);
+            int NewSaldo = config.saldo;
+
+            JObject jObject = Newtonsoft.Json.JsonConvert.DeserializeObject(jsonStringFromFile) as JObject;
+            JToken jToken = jObject.SelectToken("saldo");
+
+            NewSaldo = SaldoLibrary.Saldo.topup(NewSaldo, Nominal);
+            jToken.Replace(NewSaldo);
+
             string updatedJsonString = jObject.ToString();
             File.WriteAllText(pathAndFile, updatedJsonString);
         }

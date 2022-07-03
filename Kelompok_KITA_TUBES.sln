@@ -5,6 +5,8 @@ VisualStudioVersion = 17.2.32505.173
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kelompok_KITA_TUBES", "Kelompok_KITA_TUBES.csproj", "{059572CB-4CBC-4EDE-9D04-880BDCF6A688}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SaldoLibrary", "..\SaldoLibrary\SaldoLibrary.csproj", "{0AEB7E61-2F19-440B-96C0-B7EEE5BF3125}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{059572CB-4CBC-4EDE-9D04-880BDCF6A688}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{059572CB-4CBC-4EDE-9D04-880BDCF6A688}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{059572CB-4CBC-4EDE-9D04-880BDCF6A688}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0AEB7E61-2F19-440B-96C0-B7EEE5BF3125}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0AEB7E61-2F19-440B-96C0-B7EEE5BF3125}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0AEB7E61-2F19-440B-96C0-B7EEE5BF3125}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0AEB7E61-2F19-440B-96C0-B7EEE5BF3125}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
