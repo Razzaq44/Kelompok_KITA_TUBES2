@@ -76,7 +76,7 @@ namespace Kelompok_6_TUBES
             int fee = Convert.ToInt32(RT.config.fee);
             if (saldo <= jumlah)
             {
-                MessageBox.Show("Saldo anda tidak mencukupi untuk melakukan transfer dengan nominal Rp. " + jumlah);
+                MessageBox.Show("Saldo anda tidak mencukupi untuk melakukan withdrawal dengan nominal Rp. " + jumlah);
             }
             else
             {
@@ -87,7 +87,7 @@ namespace Kelompok_6_TUBES
                 }
                 else
                 {
-                    MessageBox.Show("Transfer ke rekening " + rek + " dengan nonimal Rp. " + jumlah + " berhasil");
+                    MessageBox.Show("Withdrawal ke rekening " + rek + " dengan nonimal Rp. " + jumlah + " berhasil");
                     MessageBox.Show("Sisa saldo anda: " + (saldo - jumlah));
                     Config.UpdateSaldo(saldo, jumlah);
                     string UpdateSaldo = SaldoLibrary.Saldo.transfer(saldo, jumlah, fee).ToString();

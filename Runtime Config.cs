@@ -71,17 +71,23 @@ namespace Kelompok_6_TUBES
         }
         public static void UpdateSaldo(int Saldo, int Jumlah)
         {
+            // Set Path file directory
             string path = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName;
             string fileConfigName = "E-Wallet_config.json";
             string pathAndFile = path + "/" + fileConfigName;
 
+            // Reading json file from path file directory
             string jsonStringFromFile = File.ReadAllText(path + "/" + fileConfigName);
             var config = System.Text.Json.JsonSerializer.Deserialize<Config>(jsonStringFromFile);
+
+            // Read Saldo from config class
             int NewSaldo = config.saldo;
 
+            // Read saldo from E-Wallet.json
             JObject jObject = Newtonsoft.Json.JsonConvert.DeserializeObject(jsonStringFromFile) as JObject;
             JToken jToken = jObject.SelectToken("saldo");
 
+            // Business Logic
             if (NewSaldo <= 0)
             {
                 NewSaldo = 0;
@@ -92,26 +98,34 @@ namespace Kelompok_6_TUBES
                 NewSaldo = SaldoLibrary.Saldo.transfer(NewSaldo, Jumlah, config.fee);
                 jToken.Replace(NewSaldo);
             }
+
+            // Update Saldo in E-Wallet.json file
             string updatedJsonString = jObject.ToString();
             File.WriteAllText(pathAndFile, updatedJsonString);
         }
 
         public static void UpdateSaldoTopUp(int Saldo, int Nominal)
         {
+            // Set Path file directory
             string path = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName;
             string fileConfigName = "E-Wallet_config.json";
             string pathAndFile = path + "/" + fileConfigName;
 
+            // Reading json file from path file directory
             string jsonStringFromFile = File.ReadAllText(path + "/" + fileConfigName);
             var config = System.Text.Json.JsonSerializer.Deserialize<Config>(jsonStringFromFile);
+
+            // Read Saldo from config class
             int NewSaldo = config.saldo;
 
+            // Read saldo from E-Wallet.json
             JObject jObject = Newtonsoft.Json.JsonConvert.DeserializeObject(jsonStringFromFile) as JObject;
             JToken jToken = jObject.SelectToken("saldo");
 
             NewSaldo = SaldoLibrary.Saldo.topup(NewSaldo, Nominal);
             jToken.Replace(NewSaldo);
 
+            // Update Saldo in E-Wallet.json file
             string updatedJsonString = jObject.ToString();
             File.WriteAllText(pathAndFile, updatedJsonString);
         }
