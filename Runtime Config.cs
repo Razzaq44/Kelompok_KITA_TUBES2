@@ -95,7 +95,7 @@ namespace Kelompok_6_TUBES
             }
             else
             {
-                NewSaldo = SaldoLibrary.Saldo.transfer(NewSaldo, Jumlah, config.fee);
+                NewSaldo = SaldoLibrary.Saldo.withdrawal(NewSaldo, Jumlah, config.fee);
                 jToken.Replace(NewSaldo);
             }
 

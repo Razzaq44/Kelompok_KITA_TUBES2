@@ -61,7 +61,8 @@ namespace Kelompok_6_TUBES
 
         private void button7_Click(object sender, EventArgs e)
         {
-            if (textBox1.Text.Length < 6 || textBox1.Text.Length > 14)
+            // Nomor rekening harus min 6 angka dan maks 14 angka
+            if (textBox1.Text.Length <= 6 || textBox1.Text.Length >= 14)
             {
                 MessageBox.Show("Nomer Rekening tidak terdaftar");
                 textBox1.Focus();
@@ -69,32 +70,30 @@ namespace Kelompok_6_TUBES
             else
             {
                 rek = textBox1.Text;
-            }
-
-            Runtime RT = new Runtime();
-            int saldo = Convert.ToInt32(RT.config.saldo);
-            int fee = Convert.ToInt32(RT.config.fee);
-            if (saldo <= jumlah)
-            {
-                MessageBox.Show("Saldo anda tidak mencukupi untuk melakukan withdrawal dengan nominal Rp. " + jumlah);
-            }
-            else
-            {
-                if (textBox1.Text == "" || jumlah == 0)
+                Runtime RT = new Runtime();
+                int saldo = Convert.ToInt32(RT.config.saldo);
+                int fee = Convert.ToInt32(RT.config.fee);
+                if (saldo <= jumlah + fee)
                 {
-                    MessageBox.Show("Pilih Jumlah dan Isi Nomor Rekening terlebih dahulu!");
-                    textBox1.Focus();
+                    MessageBox.Show("Saldo anda tidak mencukupi untuk melakukan withdrawal dengan nominal Rp. " + jumlah);
                 }
                 else
                 {
-                    MessageBox.Show("Withdrawal ke rekening " + rek + " dengan nonimal Rp. " + jumlah + " berhasil");
-                    MessageBox.Show("Sisa saldo anda: " + (saldo - jumlah));
-                    Config.UpdateSaldo(saldo, jumlah);
-                    string UpdateSaldo = SaldoLibrary.Saldo.transfer(saldo, jumlah, fee).ToString();
-                    label6.Text = "Rp. " + UpdateSaldo;
+                    if (textBox1.Text == "" || jumlah == 0)
+                    {
+                        MessageBox.Show("Pilih Jumlah dan Isi Nomor Rekening terlebih dahulu!");
+                        textBox1.Focus();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Withdrawal ke rekening " + rek + " dengan nonimal Rp. " + jumlah + " berhasil");
+                        MessageBox.Show("Sisa saldo anda: " + (saldo - jumlah));
+                        Config.UpdateSaldo(saldo, jumlah);
+                        string UpdateSaldo = SaldoLibrary.Saldo.withdrawal(saldo, jumlah, fee).ToString();
+                        label6.Text = "Rp. " + UpdateSaldo;
+                    }
                 }
-            }
-            
+            }   
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -104,7 +103,7 @@ namespace Kelompok_6_TUBES
 
         private void button8_Click(object sender, EventArgs e)
         {
-            if (textBox1.Text.Length < 6 || textBox1.Text.Length > 14)
+            if (textBox1.Text.Length <= 6 || textBox1.Text.Length >= 14)
             {
                 MessageBox.Show("Nomer Rekening tidak terdaftar");
                 textBox1.Focus();
@@ -112,25 +111,22 @@ namespace Kelompok_6_TUBES
             else
             {
                 rek = textBox1.Text;
-            }
-
-            Runtime RT = new Runtime();
-            int saldo = Convert.ToInt32(RT.config.saldo);
-            if (textBox1.Text == "" || jumlah == 0)
-            {
-                MessageBox.Show("Pilih Jumlah dan Isi Nomor Rekening terlebih dahulu!");
-                textBox1.Focus();
-            }
-            else
-            {
-                MessageBox.Show("Tagihan ke rekening " + rek + " dengan nonimal Rp. " + jumlah + " berhasil");
-                MessageBox.Show("saldo anda: " + SaldoLibrary.Saldo.topup(saldo,jumlah));
-                Config.UpdateSaldoTopUp(saldo, jumlah);
-                string UpdateSaldo = SaldoLibrary.Saldo.topup(saldo, jumlah).ToString();
-                label6.Text = "Rp. " + UpdateSaldo;
-            }
-            
+                Runtime RT = new Runtime();
+                int saldo = Convert.ToInt32(RT.config.saldo);
+                if (textBox1.Text == "" || jumlah == 0)
+                {
+                    MessageBox.Show("Pilih Jumlah dan Isi Nomor Rekening terlebih dahulu!");
+                    textBox1.Focus();
+                }
+                else
+                {
+                    MessageBox.Show("Tagihan ke rekening " + rek + " dengan nonimal Rp. " + jumlah + " berhasil");
+                    MessageBox.Show("saldo anda: " + SaldoLibrary.Saldo.topup(saldo, jumlah));
+                    Config.UpdateSaldoTopUp(saldo, jumlah);
+                    string UpdateSaldo = SaldoLibrary.Saldo.topup(saldo, jumlah).ToString();
+                    label6.Text = "Rp. " + UpdateSaldo;
+                }
+            }           
         }
     }
-
 }

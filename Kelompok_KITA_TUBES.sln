@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kelompok_KITA_TUBES", "Kelo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SaldoLibrary", "..\SaldoLibrary\SaldoLibrary.csproj", "{0AEB7E61-2F19-440B-96C0-B7EEE5BF3125}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unit Testing Withdrawal", "..\Unit Testing Withdrawal\Unit Testing Withdrawal.csproj", "{4AE25CF8-68ED-4B70-85C6-56F1EACEE285}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test_Top-up", "..\Test_Top-up\Test_Top-up.csproj", "{C76785FF-E439-4EE0-9CE0-F41D28AF3507}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{0AEB7E61-2F19-440B-96C0-B7EEE5BF3125}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0AEB7E61-2F19-440B-96C0-B7EEE5BF3125}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0AEB7E61-2F19-440B-96C0-B7EEE5BF3125}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4AE25CF8-68ED-4B70-85C6-56F1EACEE285}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4AE25CF8-68ED-4B70-85C6-56F1EACEE285}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4AE25CF8-68ED-4B70-85C6-56F1EACEE285}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4AE25CF8-68ED-4B70-85C6-56F1EACEE285}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C76785FF-E439-4EE0-9CE0-F41D28AF3507}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C76785FF-E439-4EE0-9CE0-F41D28AF3507}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C76785FF-E439-4EE0-9CE0-F41D28AF3507}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C76785FF-E439-4EE0-9CE0-F41D28AF3507}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
