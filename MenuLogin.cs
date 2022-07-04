@@ -30,7 +30,7 @@ namespace Kelompok_6_TUBES
             konek.Open();
             if (textBox1.Text == "" & textBox2.Text == "" & textBox3.Text == "" & !Regex.IsMatch(textBox3.Text, @"^[a-zA-Z][\w.-][a-zA-Z0-9]@[a-zA-Z0-9][\w.-][a-zA-Z0-9].[a-zA-Z][a-zA-Z.]*[a-zA-Z]$"))//Parshing METHOD
             {
-                MessageBox.Show("Username atau password masih kosong");//Programing Defensive METHOD
+                MessageBox.Show("Username atau password masih kosong");
             }
             else if (textBox2.Text != "Password")
             {
@@ -38,7 +38,7 @@ namespace Kelompok_6_TUBES
             }
             else
             {
-                SqlDataAdapter adr = new SqlDataAdapter("select Username,Password,Gmail from E-Wallet where Username = '" + textBox1.Text + "' OR Gmail = '" + textBox3.Text + "' AND Password = '" + textBox2.Text + "' ", konek);
+                SqlDataAdapter adr = new SqlDataAdapter("select Username,Password,Gmail from rara.E-Wallet where Username = '" + textBox1.Text + "' OR Gmail = '" + textBox3.Text + "' AND Password = '" + textBox2.Text + "' ", konek);
                 DataTable dt = new DataTable();
                 adr.Fill(dt);
 
@@ -71,3 +71,6 @@ namespace Kelompok_6_TUBES
         }
     }
 }
+
+
+       
